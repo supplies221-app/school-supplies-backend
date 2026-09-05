@@ -103,4 +103,8 @@ app.post('/price', (req, res) => {
 app.get('/', (req, res) => res.send('School Supplies API is running ✅'));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Server running on port ' + PORT));
+if (require.main === module) {
+  app.listen(PORT, () => console.log('Server running on port ' + PORT));
+}
+
+module.exports = app; // مطلوب عشان Vercel تقدر تستضيف السيرفر من غير app.listen
